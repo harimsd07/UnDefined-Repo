@@ -1,16 +1,24 @@
 ---
 share_link: https://share.note.sx/qe7cxpe7#9qfYn6YNEMzbK6S9DUZDVbGlzMbC3ybFnyAmvxABgmk
-share_updated: 2025-03-30T20:09:51+05:30
+share_updated: 2025-04-12T21:43:17+05:30
 ---
 https://share.note.sx/fte6m26d#AnRiEpk+STQeEN46kDTjE+AsGrFFefxkfwcfCYLbvpY 
 
 `Posting project to github` 
+```
+
 `git init`
-`git add .`
- `git commit -m "some mesage for initial commiting"`
-`git remote add origin "git url / ssh url"`
+
+`git add .
+`
+ `git commit -m "some mesage for initial commiting"
+ `
+`git remote add origin "git url / ssh url"
+`
 `git remote set-url origin "git url / ssh url" used to change the URL of an existing remote repository in your local Git project`
+
  `git push origin master/main.`
+```
 
 notes
 
@@ -48,8 +56,11 @@ after using the command
 
 8.git stash - is the command used to hide the file until we need . its history are not involved in the file until we reuse it
 
+		The purpose of `git stash pop` is to reapply changes from a stash and remove the stash from the stash list. It applies the changes from the specified stash to your working directory and then deletes that particular entry from the stash list, making it different from `git stash apply`, which applies the stash but keeps it in the stash list.
+
 ![](https://share.note.sx/file/notesx/files/ujhcwlp9via7hjrgi5mh.png)  
 10.git stash pop  
+
 ![](https://share.note.sx/file/notesx/files/mzbkcs46th8o6fasdi52.png)
 
 11.git stash clear
@@ -152,4 +163,73 @@ after the merging we have done changes in the README.md file
 ![](https://share.note.sx/file/notesx/files/y4rjobcff3nean5m0vqv.png)
 
 
-ledStatus@1
+
+
+## Fetching branches 
+
+# 
+
+List GitHub Branches
+
+To list branches in a GitHub repository, you can use several Git commands. First, ensure you have the latest information from the remote repository by running:
+
+```
+git fetch --all
+```
+
+This command downloads the metadata about all branches on the remote, ensuring the output is complete.23
+
+To list all branches, including both local and remote branches, use:
+
+```
+git branch -a
+```
+
+This command outputs a list of all branches in the remote repository, preceded by the name of the remote that contains the branches.23
+
+Alternatively, to list remote branches only, use:
+
+```
+git branch -r
+```
+
+This command displays branches that exist on the remote repository.3
+
+For more detailed information, including the latest commit hash and commit message for each branch, use:
+
+```
+git branch -r -v
+```
+
+This command shows the remote name, branch name, latest commit hash, and the latest commit message for each branch.23
+
+To list all references in a remote repository without cloning it, use:
+
+```
+git ls-remote [remote_name_or_URL]
+```
+
+Replace `[remote_name_or_URL]` with the name of the remote repository if it has been added, or with the URL of the repository if you have not added it yet. The first column of the output shows the SHA-1 ID of the specified Git object the reference points to, and the second column is the name of the reference.3
+
+
+# 
+
+## Delete GitHub Branch
+
+To delete a branch in GitHub, you can follow these steps:
+
+1. **Delete a Local Branch**: Use the command `git branch -d <branch_name>` to delete a local branch. If you want to force delete a local branch, use `git branch -D <branch_name>`.235+1
+    
+2. **Delete a Remote Branch**: Use the command `git push origin --delete <branch_name>` to delete a remote branch.235+1
+    
+
+Alternatively, you can delete a remote branch directly from the GitHub web interface:
+
+- Navigate to the main page of the repository.
+    
+- Click on the "Branches" tab.
+    
+- Find the branch you want to delete and click the "Delete" button next to it.9
+    
+
+If you delete a remote branch using the command line, the local tracking branch will also be removed. If you delete a remote branch through the GitHub web interface, the local tracking branch will not be deleted automatically
