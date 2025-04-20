@@ -8,26 +8,6 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
-  void getData() async {
-    String username = await Future.delayed(Duration(seconds: 3), () {
-      return 'irah';
-    });
-
-    String bio = await Future.delayed(Duration(seconds: 3), () {
-      return 'noob techie and enthu';
-    });
-
-    print('$username - $bio');
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-
-    print('hey there');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,12 +17,6 @@ class _ChooseLocationState extends State<ChooseLocation> {
         elevation: 0,
         centerTitle: true,
         title: Text('Choose a Location'),
-      ),
-      body: ElevatedButton(
-        onPressed: () {
-          setState(() {});
-        },
-        child: null,
       ),
     );
   }
