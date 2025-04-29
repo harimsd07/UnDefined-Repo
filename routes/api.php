@@ -25,3 +25,5 @@ Route::delete('deleteStudent/{id}',[StudentController::class,'delete']);
 
 Route::post('/employeeData',[EmployeeController::class,'store']);
 Route::get('/employeeList',[EmployeeController::class,'index']);
+Route::put('/updateEmployeeData/($id}',[EmployeeController::class,'update']);
+Route::delete('/deleteEmployeeData/{$id}',[EmployeeController::class,'delete']);
