@@ -33,7 +33,33 @@ class EmployeeController extends Controller
             'message' => 'data has been stored successfully',
             'data' => $employeeDate
         ]);
+    }
 
+    public function update(Request $request, $id){
 
+        $employee = Employee::find($id);
+
+        $employee->name = $request->name;
+        $employee->email = $request->email;
+        $employee->phNum = $request->phNum;
+
+        $employee->save();
+
+        return response()->json([
+            'status' => 1,
+            'message' => 'data has been updated successfully',
+
+        ]);
+    }
+
+    public function delete($id){
+        $deleteEmplyee = Employee::find($id);
+        $deleteEmplyee->delete();
+
+        return response()->json([
+            'status' => 1,
+            'message' => 'data has been deleted successfully',
+
+        ]);
     }
 }
