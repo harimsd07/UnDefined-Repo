@@ -7,9 +7,11 @@ use App\Http\Resources\StudentResource;
 use App\Models\StudentTask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\HttpResponses;
 
 class StudentTaskController extends Controller
 {
+    use HttpResponses;
     /**
      * Display a listing of the resource.
      */
@@ -46,9 +48,12 @@ class StudentTaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(StudentTask $task)
     {
-        //
+        if(Auth::user()->id != $task->user_id){
+            return $this->authError('','You are unauthorized',403);
+        }
+        return new StudentResource($task);
     }
 
     /**
@@ -62,16 +67,19 @@ class StudentTaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, StudentTask $task)
     {
-        //
+        $task->update($request->all());
+
+        return new StudentResource($task);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(StudentTask $task)
     {
-        //
+        $task->delete();
+        return response([204,null]);
     }
 }
